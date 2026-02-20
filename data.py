@@ -19,7 +19,11 @@ class TimeSeriesDataset(Dataset):
         return len(self.X) - self.seq_len 
         
     def __getitem__(self, idx):
-        return (self.X[idx:idx+self.seq_len], self.y[idx+self.seq_len])
+        # Transpose to [features, seq_len] for Conv1d
+        # TCN expects input: (batch, features, seq_len)
+        x_seq = self.X[idx:idx+self.seq_len].T  # Shape: (features, seq_len)
+        y_target = self.y[idx+self.seq_len]
+        return (x_seq, y_target)
 
 def add_lag_features(df, target_cols, lags=[1, 3, 12]):
     """    
@@ -89,6 +93,25 @@ def transform_data(data, save_path="Transforms/default/scaler.pkl"):
         pickle.dump(scaler, f)
     
     return data_scaled
+
+def transform_with_scaler(data, scaler_path):
+    """Transform data using an existing scaler (no fitting)"""
+    
+    # Convert to absolute path if it's relative
+    if not os.path.isabs(scaler_path):
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        scaler_path = os.path.join(base_dir, scaler_path)
+    
+    with open(scaler_path, "rb") as f:
+        scaler = pickle.load(f)
+    
+    return scaler.transform(data)
+
+# Backwards-compatible wrapper used by notebooks/scripts that call
+# `transform_data_with_scaler(...)`.
+def transform_data_with_scaler(data, scaler_path):
+    """Alias for `transform_with_scaler` kept for compatibility."""
+    return transform_with_scaler(data, scaler_path)
 
 def inverse_transform(data, load_path="Transforms/default/scaler.pkl"):
     """Inverse transform data using saved scaler"""

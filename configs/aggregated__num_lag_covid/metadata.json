@@ -1,0 +1,9 @@
+{
+    "target": "aggregated",
+    "config": "num_lag_covid",
+    "best_loss": 30.308359909057618,
+    "per_label_mape": {},
+    "best_std": 20.63721341351883,
+    "num_trials": 1,
+    "timestamp": "2026-02-20T12:48:54.856092"
+}

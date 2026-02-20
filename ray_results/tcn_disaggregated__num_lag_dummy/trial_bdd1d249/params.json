@@ -1,0 +1,47 @@
+{
+  "batch_size": 16,
+  "dropout": 0.229156110476626,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "disaggregated__num_lag_dummy",
+  "factor": 0.390931875903009,
+  "features": [
+    "BIR",
+    "BOC",
+    "Other Offices",
+    "Non-tax Revenues",
+    "Expenditures",
+    "TotalTrade_PHPMN",
+    "NominalGDP_disagg",
+    "Pop_disagg",
+    "USDPHP"
+  ],
+  "hidden_size": 96,
+  "l1_lambda": 2.185072867338112e-05,
+  "labels": [
+    "BIR",
+    "BOC",
+    "Other Offices",
+    "Non-tax Revenues",
+    "Expenditures"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.004068003138144764,
+  "num_layers": 2,
+  "patience": 10,
+  "seq_len": 6,
+  "use_attention": false,
+  "use_branches": true,
+  "use_seasonal": false,
+  "wd": 2.236040622527497e-05
+}

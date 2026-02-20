@@ -319,14 +319,12 @@ def crossval(data, labels, args, n_splits=5):  # REMOVED: test_data, test_labels
         
         # Create fresh model for this fold
         set_seed(1)
-        model = mod.GRUModel(
+        model = mod.TCNRegressor(
             input_size=input_size,
-            hidden_size=args.hidden_size,
+            num_channels=args.num_channels,
             output_size=output_size,
-            num_layers=args.num_layers,
-            dropout=args.dropout,
-            num_attention_heads=getattr(args, 'num_attention_heads', 4),
-            args=args
+            kernel_size=args.kernel_size,
+            dropout=args.dropout
         ).to(args.device)
         
         # Train and evaluate on validation fold

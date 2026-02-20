@@ -27,25 +27,26 @@ def ray_train(config):
     # Load dataset
     dataset = load_dataset(data_args)
     
-    # Create args
-    args = Arguments(
-        **config,
-        seed=1,
-        epoch=100,
-        tuning_mode=True,       
-        cv_data=dataset['cv_data'],
-        cv_labels=dataset['cv_labels'],
-        test_data=dataset['test_data'],
-        test_labels=dataset['test_labels'],
-        input_size=dataset['input_size'],
-        output_size=dataset['output_size'],
-        
-        device = torch.device("mps" if torch.backends.mps.is_available() 
-                              else "cuda" if torch.cuda.is_available()
-                              else "cpu"),
-        train_criterion=nn.HuberLoss(),
-        test_criterion=MAPELoss()
-    )
+    # Create args (avoid duplicate kwargs when config already contains keys like output_size)
+    args_payload = dict(config)
+    args_payload['input_size'] = dataset['input_size']
+    args_payload['output_size'] = config.get('output_size', dataset['output_size'])
+    args_payload.update({
+        'seed': 1,
+        'epoch': 100,
+        'tuning_mode': True,
+        'cv_data': dataset['cv_data'],
+        'cv_labels': dataset['cv_labels'],
+        'test_data': dataset['test_data'],
+        'test_labels': dataset['test_labels'],
+        'device': torch.device("mps" if torch.backends.mps.is_available()
+                               else "cuda" if torch.cuda.is_available()
+                               else "cpu"),
+        'train_criterion': nn.HuberLoss(),
+        'test_criterion': MAPELoss(),
+    })
+
+    args = Arguments(**args_payload)
     
     # Set seed
     set_seed(args.seed)

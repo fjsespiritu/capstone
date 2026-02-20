@@ -1,20 +1,18 @@
 {
     "num_channels": [
-        64,
-        64,
-        64
+        128,
+        128,
+        128
     ],
     "kernel_size": 4,
-    "dropout": 0.2142509261316336,
-    "use_attention": true,
-    "use_branches": true,
-    "lr": 0.018893145459771915,
-    "wd": 1.6470930463548278e-05,
-    "factor": 0.28739284351112215,
-    "patience": 10,
-    "batch_size": 32,
-    "seq_len": 12,
-    "l1_lambda": 0.003807707394040368,
+    "dropout": 0.1989750266230205,
+    "lr": 0.001,
+    "wd": 1.3598871561711122e-06,
+    "factor": 0.4482269363307092,
+    "patience": 5,
+    "batch_size": 16,
+    "seq_len": 24,
+    "l1_lambda": 1.8536780369069837e-05,
     "lag_periods": [
         1,
         3,
