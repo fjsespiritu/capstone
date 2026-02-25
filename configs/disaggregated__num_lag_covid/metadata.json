@@ -1,9 +1,9 @@
 {
     "target": "disaggregated",
     "config": "num_lag_covid",
-    "best_loss": 23.856742477416994,
+    "best_loss": 23.980487823486328,
     "per_label_mape": {},
-    "best_std": 8.901627111309732,
-    "num_trials": 47,
-    "timestamp": "2026-02-20T06:13:16.317077"
+    "best_std": 9.265333189380483,
+    "num_trials": 50,
+    "timestamp": "2026-02-21T01:20:10.181162"
 }

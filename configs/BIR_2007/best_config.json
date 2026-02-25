@@ -1,0 +1,47 @@
+{
+    "num_channels": [
+        256,
+        256
+    ],
+    "kernel_size": 4,
+    "dropout": 0.2882855870382914,
+    "lr": 0.0014093073681240578,
+    "wd": 2.155065796920505e-06,
+    "factor": 0.39486201875426513,
+    "patience": 5,
+    "batch_size": 64,
+    "seq_len": 24,
+    "l1_lambda": 8.250254514458269e-05,
+    "lag_periods": [
+        1,
+        3,
+        6,
+        12
+    ],
+    "features": [
+        "Tax Revenues",
+        "BIR",
+        "BOC",
+        "Other Offices",
+        "Non-tax Revenues",
+        "Expenditures",
+        "TotalTrade_PHPMN",
+        "NominalGDP_disagg",
+        "Pop_disagg",
+        "USDPHP"
+    ],
+    "dummy_vars": [
+        "COVID-19",
+        "TRAIN",
+        "CREATE",
+        "FIST",
+        "BIR_COMM"
+    ],
+    "use_seasonal": true,
+    "use_lags": true,
+    "labels": [
+        "BIR"
+    ],
+    "experiment_name": "BIR_2007",
+    "start_date": "2007-01-01"
+}

@@ -1,0 +1,39 @@
+{
+  "batch_size": 16,
+  "dropout": 0.29419911352482064,
+  "dummy_vars": [
+    "COVID-19"
+  ],
+  "experiment_name": "aggregated__num_lag_covid_seasonal",
+  "factor": 0.3787020181920096,
+  "features": [
+    "Non-tax Revenues",
+    "Expenditures",
+    "Tax Revenues",
+    "TotalTrade_PHPMN",
+    "NominalGDP_disagg",
+    "Pop_disagg",
+    "USDPHP"
+  ],
+  "kernel_size": 3,
+  "l1_lambda": 0.006286944772154462,
+  "labels": [
+    "Tax Revenues",
+    "Non-tax Revenues",
+    "Expenditures"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.008059318511472504,
+  "num_channels": [
+    64
+  ],
+  "patience": 10,
+  "seq_len": 24,
+  "use_seasonal": true,
+  "wd": 9.722616711098139e-05
+}
