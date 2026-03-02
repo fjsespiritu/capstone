@@ -2,137 +2,209 @@
     "1992-01-01": {
         "Tax Revenues": {
             "order": [
+                2,
                 0,
-                0,
-                3
+                1
+            ],
+            "seasonal_order": [
+                1,
+                1,
+                1,
+                12
             ],
             "tcn_mape": 17.17941665649414,
             "tcn_rmse": 51153.40234375,
-            "hybrid_mape": 17.24529488223083,
-            "hybrid_rmse": 51148.42331191034
+            "hybrid_mape": 17.42504362094108,
+            "hybrid_rmse": 51716.71531043348
         },
         "BIR": {
             "order": [
+                2,
                 0,
+                2
+            ],
+            "seasonal_order": [
                 0,
-                3
+                1,
+                0,
+                12
             ],
             "tcn_mape": 22.24130630493164,
             "tcn_rmse": 46391.34765625,
-            "hybrid_mape": 22.003332263770613,
-            "hybrid_rmse": 45789.38801525971
+            "hybrid_mape": 22.064753130377156,
+            "hybrid_rmse": 46626.71148174543
         },
         "BOC": {
             "order": [
+                2,
+                1,
+                0
+            ],
+            "seasonal_order": [
                 0,
-                1,
-                1
-            ],
-            "tcn_mape": 13.208492279052734,
-            "tcn_rmse": 10064.4521484375,
-            "hybrid_mape": 9.314965410381683,
-            "hybrid_rmse": 7085.066245833694
-        },
-        "Other Offices": {
-            "order": [
-                3,
                 0,
-                1
-            ],
-            "tcn_mape": 27.130308151245117,
-            "tcn_rmse": 687.7389526367188,
-            "hybrid_mape": 27.63821385539755,
-            "hybrid_rmse": 694.8494695497398
-        },
-        "Non-tax Revenues": {
-            "order": [
-                1,
-                1,
-                2
-            ],
-            "tcn_mape": 64.6630630493164,
-            "tcn_rmse": 17612.46484375,
-            "hybrid_mape": 65.06233727182334,
-            "hybrid_rmse": 17627.34246702983
-        },
-        "Expenditures": {
-            "order": [
-                1,
                 1,
                 3
             ],
+            "tcn_mape": 13.208492279052734,
+            "tcn_rmse": 10064.4521484375,
+            "hybrid_mape": 9.275929582182863,
+            "hybrid_rmse": 7074.6881258297235
+        },
+        "Other Offices": {
+            "order": [
+                1,
+                0,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                1,
+                0,
+                3
+            ],
+            "tcn_mape": 27.130308151245117,
+            "tcn_rmse": 687.7389526367188,
+            "hybrid_mape": 34.752254103977904,
+            "hybrid_rmse": 788.0125552558179
+        },
+        "Non-tax Revenues": {
+            "order": [
+                2,
+                1,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                0,
+                3
+            ],
+            "tcn_mape": 64.6630630493164,
+            "tcn_rmse": 17612.46484375,
+            "hybrid_mape": 73.74874473890289,
+            "hybrid_rmse": 18085.347681813677
+        },
+        "Expenditures": {
+            "order": [
+                2,
+                1,
+                2
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                12
+            ],
             "tcn_mape": 25.42497444152832,
             "tcn_rmse": 143125.890625,
-            "hybrid_mape": 18.442593768374014,
-            "hybrid_rmse": 108023.05509118571
+            "hybrid_mape": 12.502302162875381,
+            "hybrid_rmse": 66327.69686247516
         }
     },
     "2000-01-01": {
         "Tax Revenues": {
             "order": [
-                3,
                 1,
-                0
-            ],
-            "tcn_mape": 12.021265029907227,
-            "tcn_rmse": 52466.67578125,
-            "hybrid_mape": 12.105149895049202,
-            "hybrid_rmse": 53957.886967921215
-        },
-        "BIR": {
-            "order": [
-                2,
                 1,
                 2
             ],
+            "seasonal_order": [
+                1,
+                1,
+                0,
+                6
+            ],
+            "tcn_mape": 12.021265029907227,
+            "tcn_rmse": 52466.67578125,
+            "hybrid_mape": 11.068033972684864,
+            "hybrid_rmse": 42680.01999429188
+        },
+        "BIR": {
+            "order": [
+                1,
+                1,
+                2
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                6
+            ],
             "tcn_mape": 13.803483963012695,
             "tcn_rmse": 45076.265625,
-            "hybrid_mape": 16.209458516897325,
-            "hybrid_rmse": 42523.38110293086
+            "hybrid_mape": 14.79587432539764,
+            "hybrid_rmse": 38573.666178907544
         },
         "BOC": {
             "order": [
                 2,
                 1,
-                1
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                12
             ],
             "tcn_mape": 15.304182052612305,
             "tcn_rmse": 12635.4140625,
-            "hybrid_mape": 13.503567894549718,
-            "hybrid_rmse": 11468.74850508935
+            "hybrid_mape": 13.533712026509981,
+            "hybrid_rmse": 11205.617450935302
         },
         "Other Offices": {
             "order": [
-                3,
+                2,
                 1,
-                0
+                1
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                12
             ],
             "tcn_mape": 23.703594207763672,
             "tcn_rmse": 685.1675415039062,
-            "hybrid_mape": 36.81637932670737,
-            "hybrid_rmse": 809.7835520992865
+            "hybrid_mape": 36.714937506787884,
+            "hybrid_rmse": 969.1345335591781
         },
         "Non-tax Revenues": {
             "order": [
                 2,
                 1,
-                3
+                1
+            ],
+            "seasonal_order": [
+                1,
+                1,
+                1,
+                6
             ],
             "tcn_mape": 52.09278869628906,
             "tcn_rmse": 29112.3125,
-            "hybrid_mape": 47.23437014208917,
-            "hybrid_rmse": 22300.329499311563
+            "hybrid_mape": 47.73828041228073,
+            "hybrid_rmse": 20262.59222688849
         },
         "Expenditures": {
             "order": [
+                2,
                 0,
+                0
+            ],
+            "seasonal_order": [
                 0,
-                3
+                1,
+                0,
+                12
             ],
             "tcn_mape": 10.180444717407227,
             "tcn_rmse": 61622.0234375,
-            "hybrid_mape": 10.512855576426823,
-            "hybrid_rmse": 62379.85049953442
+            "hybrid_mape": 9.394978237746283,
+            "hybrid_rmse": 54726.63977589962
         }
     },
     "2007-01-01": {
@@ -142,54 +214,84 @@
                 1,
                 0
             ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                12
+            ],
             "tcn_mape": 15.88578987121582,
             "tcn_rmse": 50146.078125,
-            "hybrid_mape": 12.231774219877368,
-            "hybrid_rmse": 51344.59433407112
+            "hybrid_mape": 12.86839821621146,
+            "hybrid_rmse": 62341.570324422995
         },
         "BIR": {
             "order": [
+                2,
                 0,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                1,
                 0,
-                2
+                12
             ],
             "tcn_mape": 18.84396743774414,
             "tcn_rmse": 47383.80078125,
-            "hybrid_mape": 18.970859488043217,
-            "hybrid_rmse": 47058.901266128865
+            "hybrid_mape": 18.65323246251398,
+            "hybrid_rmse": 45605.222413900854
         },
         "BOC": {
             "order": [
+                0,
+                0,
+                1
+            ],
+            "seasonal_order": [
+                0,
                 1,
-                1,
-                3
+                0,
+                12
             ],
             "tcn_mape": 15.349730491638184,
             "tcn_rmse": 12777.935546875,
-            "hybrid_mape": 15.335250283159176,
-            "hybrid_rmse": 12764.145904916428
+            "hybrid_mape": 15.634216883112598,
+            "hybrid_rmse": 12907.010454434963
         },
         "Other Offices": {
             "order": [
-                2,
+                1,
                 0,
-                3
+                2
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                0,
+                6
             ],
             "tcn_mape": 19.454275131225586,
             "tcn_rmse": 651.750732421875,
-            "hybrid_mape": 19.630660258436418,
-            "hybrid_rmse": 658.9320655800482
+            "hybrid_mape": 23.295186275712325,
+            "hybrid_rmse": 837.2447292836474
         },
         "Non-tax Revenues": {
             "order": [
-                0,
+                2,
                 1,
-                1
+                2
+            ],
+            "seasonal_order": [
+                1,
+                1,
+                0,
+                12
             ],
             "tcn_mape": 46.013221740722656,
             "tcn_rmse": 20184.88671875,
-            "hybrid_mape": 45.93471930144064,
-            "hybrid_rmse": 20230.086780018304
+            "hybrid_mape": 43.049784211691176,
+            "hybrid_rmse": 22087.518991328747
         },
         "Expenditures": {
             "order": [
@@ -197,10 +299,16 @@
                 1,
                 0
             ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                12
+            ],
             "tcn_mape": 18.009132385253906,
             "tcn_rmse": 113571.0078125,
-            "hybrid_mape": 10.36640863259841,
-            "hybrid_rmse": 64537.77013251802
+            "hybrid_mape": 10.458295832258374,
+            "hybrid_rmse": 70346.71364140126
         }
     }
 }

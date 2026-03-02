@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+from scipy import stats
 from data import inverse_transform
 import shap
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 
 def plot_training_history(train_losses, val_losses):
     plt.figure(figsize=(12, 5))
@@ -219,7 +221,38 @@ def plot_shap_dependence(shap_values, test_data, feature_names, feature_idx, out
     plt.tight_layout()
     plt.show()
 
-    def plot_residual_diagnostics(actual, pred, label, save_dir=None):
+def plot_residual_diagnostics(actual, pred, label, save_dir=None):
+    actual    = np.array(actual).flatten()
+    pred      = np.array(pred).flatten()
+    residuals = actual - pred
+    max_lags  = min(24, len(residuals) // 2 - 1)
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 8))
+    fig.suptitle(f'Residual Diagnostics — {label}')
+
+    # Residuals over time
+    axes[0,0].plot(residuals)
+    axes[0,0].axhline(0, color='red', linestyle='--')
+    axes[0,0].set_title('Residuals Over Time')
+
+    # Distribution
+    axes[0,1].hist(residuals, bins=20, density=True, alpha=0.7)
+    xmin, xmax = axes[0,1].get_xlim()
+    x = np.linspace(xmin, xmax, 100)
+    axes[0,1].plot(x, stats.norm.pdf(x, residuals.mean(), residuals.std()), 'r')
+    axes[0,1].set_title('Distribution')
+
+    # ACF / PACF
+    plot_acf(residuals,  lags=max_lags, ax=axes[1,0], title='ACF')
+    plot_pacf(residuals, lags=max_lags, ax=axes[1,1], title='PACF')
+
+    plt.tight_layout()
+    if save_dir:
+        plt.savefig(f"{save_dir}/residual_diagnostics.png", dpi=150)
+    plt.show()
+
+import matplotlib.pyplot as plt
+def plot_residual_diagnostics(actual, pred, label, save_dir=None):
     actual    = np.array(actual).flatten()
     pred      = np.array(pred).flatten()
     residuals = actual - pred
