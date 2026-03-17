@@ -1,0 +1,10 @@
+{
+    "label": "BIR",
+    "start_date": "2000-01-01",
+    "seed": 6,
+    "test_loss": 16.30875015258789,
+    "per_label_mape": {
+        "loss_BIR": 16.30875015258789
+    },
+    "timestamp": "2026-03-13T19:30:17.958231"
+}

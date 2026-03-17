@@ -1,0 +1,38 @@
+{
+  "batch_size": 16,
+  "dropout": 0.15270777150114045,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "Tax_Revenues_1992_feat_select",
+  "factor": 0.33156578468765496,
+  "features": [
+    "BIR",
+    "TotalTrade_PHPMN",
+    "Other Offices",
+    "Non-tax Revenues",
+    "USDPHP",
+    "Inflation"
+  ],
+  "kernel_size": 2,
+  "l1_lambda": 6.425102832141893e-05,
+  "labels": [
+    "Tax Revenues"
+  ],
+  "lag_periods": [],
+  "lr": 0.001206580544818286,
+  "num_channels": [
+    64,
+    64,
+    64
+  ],
+  "patience": 5,
+  "seq_len": 12,
+  "start_date": "1992-01-01",
+  "tag": "feat_select",
+  "use_lags": false,
+  "use_seasonal": true,
+  "wd": 6.7585933364206e-05
+}

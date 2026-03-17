@@ -1,0 +1,42 @@
+{
+  "batch_size": 32,
+  "dropout": 0.14666730223193086,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "BIR_2000",
+  "factor": 0.46422875641477723,
+  "features": [
+    "Tax Revenues",
+    "BOC",
+    "Other Offices",
+    "Non-tax Revenues",
+    "Expenditures",
+    "TotalTrade_PHPMN"
+  ],
+  "kernel_size": 2,
+  "l1_lambda": 0.00018719383898024055,
+  "labels": [
+    "BIR"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.0006462150235606096,
+  "num_channels": [
+    256
+  ],
+  "patience": 10,
+  "seq_len": 12,
+  "start_date": "2000-01-01",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 3.37706951137489e-05
+}

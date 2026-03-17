@@ -1,0 +1,93 @@
+{
+    "label": "Tax Revenues",
+    "start_date": "2000-01-01",
+    "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "mean_test_loss": 12.80352430343628,
+    "std_test_loss": 0.5574672641554552,
+    "best_seed": 4,
+    "best_seed_test_loss": 11.58828067779541,
+    "seed_results": [
+        {
+            "seed": 1,
+            "test_loss": 13.479851722717285,
+            "per_label_mape": {
+                "loss_Tax Revenues": 13.479851722717285
+            }
+        },
+        {
+            "seed": 2,
+            "test_loss": 13.383016586303711,
+            "per_label_mape": {
+                "loss_Tax Revenues": 13.383016586303711
+            }
+        },
+        {
+            "seed": 3,
+            "test_loss": 12.801612854003906,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.801612854003906
+            }
+        },
+        {
+            "seed": 4,
+            "test_loss": 11.58828067779541,
+            "per_label_mape": {
+                "loss_Tax Revenues": 11.58828067779541
+            }
+        },
+        {
+            "seed": 5,
+            "test_loss": 12.996389389038086,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.996389389038086
+            }
+        },
+        {
+            "seed": 6,
+            "test_loss": 12.974183082580566,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.974183082580566
+            }
+        },
+        {
+            "seed": 7,
+            "test_loss": 13.373680114746094,
+            "per_label_mape": {
+                "loss_Tax Revenues": 13.373680114746094
+            }
+        },
+        {
+            "seed": 8,
+            "test_loss": 12.478792190551758,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.478792190551758
+            }
+        },
+        {
+            "seed": 9,
+            "test_loss": 12.73574161529541,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.73574161529541
+            }
+        },
+        {
+            "seed": 10,
+            "test_loss": 12.223694801330566,
+            "per_label_mape": {
+                "loss_Tax Revenues": 12.223694801330566
+            }
+        }
+    ],
+    "timestamp": "2026-03-13T19:23:33.405082"
+}

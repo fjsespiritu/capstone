@@ -1,0 +1,42 @@
+{
+  "batch_size": 32,
+  "dropout": 0.16518085454713444,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "BOC_2000",
+  "factor": 0.3115150070725172,
+  "features": [
+    "Tax Revenues",
+    "BIR",
+    "Other Offices",
+    "Non-tax Revenues",
+    "Expenditures",
+    "TotalTrade_PHPMN"
+  ],
+  "kernel_size": 4,
+  "l1_lambda": 0.0002820393617772113,
+  "labels": [
+    "BOC"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.01119401656903775,
+  "num_channels": [
+    64
+  ],
+  "patience": 10,
+  "seq_len": 18,
+  "start_date": "2000-01-01",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.1138266502365802e-05
+}

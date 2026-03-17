@@ -1,0 +1,34 @@
+{
+  "batch_size": 32,
+  "dropout": 0.21695850974427172,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "BIR_2000_feat_select",
+  "factor": 0.40967563414421637,
+  "features": [
+    "USDPHP",
+    "Inflation"
+  ],
+  "kernel_size": 3,
+  "l1_lambda": 0.00021725084990035202,
+  "labels": [
+    "BIR"
+  ],
+  "lag_periods": [
+    12
+  ],
+  "lr": 0.0005833243884098363,
+  "num_channels": [
+    64
+  ],
+  "patience": 10,
+  "seq_len": 24,
+  "start_date": "2000-01-01",
+  "tag": "feat_select",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.053059608066387e-06
+}

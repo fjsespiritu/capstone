@@ -1,0 +1,10 @@
+{
+    "label": "Tax Revenues",
+    "start_date": "1992-01-01",
+    "seed": 10,
+    "test_loss": 17.63689613342285,
+    "per_label_mape": {
+        "loss_Tax Revenues": 17.63689613342285
+    },
+    "timestamp": "2026-03-13T18:37:03.767835"
+}

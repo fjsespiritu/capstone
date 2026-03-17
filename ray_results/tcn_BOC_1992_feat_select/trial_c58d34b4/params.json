@@ -1,0 +1,36 @@
+{
+  "batch_size": 64,
+  "dropout": 0.28023630055969667,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "BOC_1992_feat_select",
+  "factor": 0.3853084708207804,
+  "features": [
+    "TotalTrade_PHPMN",
+    "USDPHP"
+  ],
+  "kernel_size": 4,
+  "l1_lambda": 0.0018077460233224614,
+  "labels": [
+    "BOC"
+  ],
+  "lag_periods": [
+    1
+  ],
+  "lr": 0.006904132825725645,
+  "num_channels": [
+    256,
+    256,
+    256
+  ],
+  "patience": 5,
+  "seq_len": 24,
+  "start_date": "1992-01-01",
+  "tag": "feat_select",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.2167277785980774e-05
+}

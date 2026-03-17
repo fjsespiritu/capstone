@@ -1,0 +1,45 @@
+{
+  "batch_size": 32,
+  "dropout": 0.22301272237772934,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "Non-tax_Revenues_1992",
+  "factor": 0.24573409441172522,
+  "features": [
+    "Tax Revenues",
+    "BIR",
+    "BOC",
+    "Other Offices",
+    "Expenditures",
+    "Pop_disagg",
+    "USDPHP",
+    "NominalGDP_disagg"
+  ],
+  "kernel_size": 5,
+  "l1_lambda": 0.00030133652656865747,
+  "labels": [
+    "Non-tax Revenues"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.001181986441299623,
+  "num_channels": [
+    128,
+    128
+  ],
+  "patience": 5,
+  "seq_len": 24,
+  "start_date": "1992-01-01",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.7019715983001027e-05
+}

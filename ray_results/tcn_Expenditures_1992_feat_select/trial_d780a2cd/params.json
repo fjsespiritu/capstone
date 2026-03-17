@@ -1,0 +1,35 @@
+{
+  "batch_size": 64,
+  "dropout": 0.2331208660540082,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "Expenditures_1992_feat_select",
+  "factor": 0.38795177254793245,
+  "features": [
+    "Non-tax Revenues",
+    "USDPHP",
+    "Inflation"
+  ],
+  "kernel_size": 3,
+  "l1_lambda": 0.000911899237665364,
+  "labels": [
+    "Expenditures"
+  ],
+  "lag_periods": [
+    12
+  ],
+  "lr": 0.0034901770026611843,
+  "num_channels": [
+    64
+  ],
+  "patience": 10,
+  "seq_len": 24,
+  "start_date": "1992-01-01",
+  "tag": "feat_select",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.331677119056954e-05
+}

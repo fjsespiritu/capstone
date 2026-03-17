@@ -1,0 +1,93 @@
+{
+    "label": "Other Offices",
+    "start_date": "2000-01-01",
+    "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "mean_test_loss": 22.525510025024413,
+    "std_test_loss": 3.650135988972573,
+    "best_seed": 8,
+    "best_seed_test_loss": 17.939388275146484,
+    "seed_results": [
+        {
+            "seed": 1,
+            "test_loss": 19.58538818359375,
+            "per_label_mape": {
+                "loss_Other Offices": 19.58538818359375
+            }
+        },
+        {
+            "seed": 2,
+            "test_loss": 28.446353912353516,
+            "per_label_mape": {
+                "loss_Other Offices": 28.446353912353516
+            }
+        },
+        {
+            "seed": 3,
+            "test_loss": 21.116931915283203,
+            "per_label_mape": {
+                "loss_Other Offices": 21.116931915283203
+            }
+        },
+        {
+            "seed": 4,
+            "test_loss": 27.254648208618164,
+            "per_label_mape": {
+                "loss_Other Offices": 27.254648208618164
+            }
+        },
+        {
+            "seed": 5,
+            "test_loss": 22.702150344848633,
+            "per_label_mape": {
+                "loss_Other Offices": 22.702150344848633
+            }
+        },
+        {
+            "seed": 6,
+            "test_loss": 26.917102813720703,
+            "per_label_mape": {
+                "loss_Other Offices": 26.917102813720703
+            }
+        },
+        {
+            "seed": 7,
+            "test_loss": 23.218761444091797,
+            "per_label_mape": {
+                "loss_Other Offices": 23.218761444091797
+            }
+        },
+        {
+            "seed": 8,
+            "test_loss": 17.939388275146484,
+            "per_label_mape": {
+                "loss_Other Offices": 17.939388275146484
+            }
+        },
+        {
+            "seed": 9,
+            "test_loss": 19.13256072998047,
+            "per_label_mape": {
+                "loss_Other Offices": 19.13256072998047
+            }
+        },
+        {
+            "seed": 10,
+            "test_loss": 18.941814422607422,
+            "per_label_mape": {
+                "loss_Other Offices": 18.941814422607422
+            }
+        }
+    ],
+    "timestamp": "2026-03-13T19:52:12.100634"
+}

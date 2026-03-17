@@ -1,0 +1,43 @@
+{
+  "batch_size": 64,
+  "dropout": 0.23948194343588433,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "Expenditures_2000",
+  "factor": 0.45498787923108364,
+  "features": [
+    "Tax Revenues",
+    "BIR",
+    "BOC",
+    "Other Offices",
+    "Non-tax Revenues",
+    "NominalGDP_disagg"
+  ],
+  "kernel_size": 3,
+  "l1_lambda": 5.934420408270869e-05,
+  "labels": [
+    "Expenditures"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.0030651679503492747,
+  "num_channels": [
+    256,
+    256
+  ],
+  "patience": 10,
+  "seq_len": 18,
+  "start_date": "2000-01-01",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 7.5738271394053405e-06
+}

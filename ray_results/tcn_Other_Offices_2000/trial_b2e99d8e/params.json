@@ -1,0 +1,44 @@
+{
+  "batch_size": 16,
+  "dropout": 0.20069058078501475,
+  "dummy_vars": [
+    "COVID-19",
+    "TRAIN",
+    "CREATE",
+    "FIST",
+    "BIR_COMM"
+  ],
+  "experiment_name": "Other_Offices_2000",
+  "factor": 0.30126893104442704,
+  "features": [
+    "Tax Revenues",
+    "BIR",
+    "BOC",
+    "Non-tax Revenues",
+    "Expenditures",
+    "Pop_disagg",
+    "TotalTrade_PHPMN"
+  ],
+  "kernel_size": 3,
+  "l1_lambda": 0.0017246705221613378,
+  "labels": [
+    "Other Offices"
+  ],
+  "lag_periods": [
+    1,
+    3,
+    6,
+    12
+  ],
+  "lr": 0.0009766324798211722,
+  "num_channels": [
+    256,
+    256
+  ],
+  "patience": 10,
+  "seq_len": 18,
+  "start_date": "2000-01-01",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 6.313608423228315e-05
+}

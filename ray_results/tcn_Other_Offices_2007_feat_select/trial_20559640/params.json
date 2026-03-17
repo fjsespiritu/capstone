@@ -1,0 +1,36 @@
+{
+  "batch_size": 64,
+  "dropout": 0.2402147071092901,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "Other_Offices_2007_feat_select",
+  "factor": 0.249365823537556,
+  "features": [
+    "USDPHP"
+  ],
+  "kernel_size": 4,
+  "l1_lambda": 9.305839839708438e-05,
+  "labels": [
+    "Other Offices"
+  ],
+  "lag_periods": [
+    1,
+    12
+  ],
+  "lr": 0.0022050465589139585,
+  "num_channels": [
+    64,
+    64,
+    64
+  ],
+  "patience": 5,
+  "seq_len": 18,
+  "start_date": "2007-01-01",
+  "tag": "feat_select",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.0034258903678117e-06
+}

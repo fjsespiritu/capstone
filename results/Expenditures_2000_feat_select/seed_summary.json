@@ -1,0 +1,93 @@
+{
+    "label": "Expenditures",
+    "start_date": "2000-01-01",
+    "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "mean_test_loss": 12.951854610443116,
+    "std_test_loss": 0.4065794501846876,
+    "best_seed": 8,
+    "best_seed_test_loss": 12.483355522155762,
+    "seed_results": [
+        {
+            "seed": 1,
+            "test_loss": 13.495442390441895,
+            "per_label_mape": {
+                "loss_Expenditures": 13.495442390441895
+            }
+        },
+        {
+            "seed": 2,
+            "test_loss": 12.539555549621582,
+            "per_label_mape": {
+                "loss_Expenditures": 12.539555549621582
+            }
+        },
+        {
+            "seed": 3,
+            "test_loss": 12.543421745300293,
+            "per_label_mape": {
+                "loss_Expenditures": 12.543421745300293
+            }
+        },
+        {
+            "seed": 4,
+            "test_loss": 12.646196365356445,
+            "per_label_mape": {
+                "loss_Expenditures": 12.646196365356445
+            }
+        },
+        {
+            "seed": 5,
+            "test_loss": 13.097539901733398,
+            "per_label_mape": {
+                "loss_Expenditures": 13.097539901733398
+            }
+        },
+        {
+            "seed": 6,
+            "test_loss": 12.860237121582031,
+            "per_label_mape": {
+                "loss_Expenditures": 12.860237121582031
+            }
+        },
+        {
+            "seed": 7,
+            "test_loss": 13.674108505249023,
+            "per_label_mape": {
+                "loss_Expenditures": 13.674108505249023
+            }
+        },
+        {
+            "seed": 8,
+            "test_loss": 12.483355522155762,
+            "per_label_mape": {
+                "loss_Expenditures": 12.483355522155762
+            }
+        },
+        {
+            "seed": 9,
+            "test_loss": 12.8456449508667,
+            "per_label_mape": {
+                "loss_Expenditures": 12.8456449508667
+            }
+        },
+        {
+            "seed": 10,
+            "test_loss": 13.333044052124023,
+            "per_label_mape": {
+                "loss_Expenditures": 13.333044052124023
+            }
+        }
+    ],
+    "timestamp": "2026-03-13T19:56:53.076156"
+}

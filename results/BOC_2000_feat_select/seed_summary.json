@@ -1,0 +1,93 @@
+{
+    "label": "BOC",
+    "start_date": "2000-01-01",
+    "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "mean_test_loss": 11.116998100280762,
+    "std_test_loss": 2.24127450224716,
+    "best_seed": 4,
+    "best_seed_test_loss": 8.12763786315918,
+    "seed_results": [
+        {
+            "seed": 1,
+            "test_loss": 10.98485279083252,
+            "per_label_mape": {
+                "loss_BOC": 10.98485279083252
+            }
+        },
+        {
+            "seed": 2,
+            "test_loss": 12.060218811035156,
+            "per_label_mape": {
+                "loss_BOC": 12.060218811035156
+            }
+        },
+        {
+            "seed": 3,
+            "test_loss": 11.156826972961426,
+            "per_label_mape": {
+                "loss_BOC": 11.156826972961426
+            }
+        },
+        {
+            "seed": 4,
+            "test_loss": 8.12763786315918,
+            "per_label_mape": {
+                "loss_BOC": 8.12763786315918
+            }
+        },
+        {
+            "seed": 5,
+            "test_loss": 16.60502052307129,
+            "per_label_mape": {
+                "loss_BOC": 16.60502052307129
+            }
+        },
+        {
+            "seed": 6,
+            "test_loss": 10.213398933410645,
+            "per_label_mape": {
+                "loss_BOC": 10.213398933410645
+            }
+        },
+        {
+            "seed": 7,
+            "test_loss": 12.109003067016602,
+            "per_label_mape": {
+                "loss_BOC": 12.109003067016602
+            }
+        },
+        {
+            "seed": 8,
+            "test_loss": 8.744649887084961,
+            "per_label_mape": {
+                "loss_BOC": 8.744649887084961
+            }
+        },
+        {
+            "seed": 9,
+            "test_loss": 11.650337219238281,
+            "per_label_mape": {
+                "loss_BOC": 11.650337219238281
+            }
+        },
+        {
+            "seed": 10,
+            "test_loss": 9.518034934997559,
+            "per_label_mape": {
+                "loss_BOC": 9.518034934997559
+            }
+        }
+    ],
+    "timestamp": "2026-03-13T19:48:38.559895"
+}

@@ -351,7 +351,27 @@ def run(model, train_loader, val_loader, test_loader, args, fold=None, label_sca
     if label_scaler is not None:
         inversed_test_preds = dt.inverse_transform(test_preds, scaler=label_scaler)
     else:
-        scaler_path = f"Transforms/{exp_name}/labels_scaled_{fold}.pkl" if fold is not None else f"Transforms/{exp_name}/labels_scaled.pkl"
+        if fold is not None:
+            candidate_scaler_paths = [
+                f"Transforms/{exp_name}/cv_labels_scaled_{fold}.pkl",
+                f"Transforms/{exp_name}/labels_scaled_{fold}.pkl",
+                f"Transforms/{exp_name}/labels_scaled.pkl",
+            ]
+        else:
+            candidate_scaler_paths = [f"Transforms/{exp_name}/labels_scaled.pkl"]
+
+        base_dir = os.path.dirname(os.path.abspath(dt.__file__))
+        resolved_candidate_paths = [
+            p if os.path.isabs(p) else os.path.join(base_dir, p)
+            for p in candidate_scaler_paths
+        ]
+
+        scaler_path = next((p for p in resolved_candidate_paths if os.path.exists(p)), None)
+        if scaler_path is None:
+            raise FileNotFoundError(
+                f"No label scaler found for experiment '{exp_name}'. Checked: {resolved_candidate_paths}"
+            )
+
         inversed_test_preds = dt.inverse_transform(test_preds, load_path=scaler_path)
 
     actual_labels = torch.cat([targets for _, targets in test_loader], dim=0).cpu().numpy()
@@ -409,12 +429,29 @@ def crossval(data, labels, args):  # REMOVED: test_data, test_labels
         val_data_fold = data[val_idx]
         val_labels_fold = labels[val_idx]
         
-        # Scale data
+        # Scale data (supports both legacy tuple return and current saved-scaler return)
         set_seed(1)
-        train_data_scaled, data_scaler   = dt.transform_data(train_data_fold)
-        train_labels_scaled, label_scaler = dt.transform_data(train_labels_fold)
-        val_data_scaled   = data_scaler.transform(val_data_fold)
-        val_labels_scaled = label_scaler.transform(val_labels_fold)
+        data_scaler_path = f"Transforms/{exp_name}/cv_train_scaled_{fold}.pkl"
+        label_scaler_path = f"Transforms/{exp_name}/cv_labels_scaled_{fold}.pkl"
+
+        train_data_scaled_res = dt.transform_data(train_data_fold, data_scaler_path)
+        train_labels_scaled_res = dt.transform_data(train_labels_fold, label_scaler_path)
+
+        if isinstance(train_data_scaled_res, tuple):
+            train_data_scaled, data_scaler = train_data_scaled_res
+            val_data_scaled = data_scaler.transform(val_data_fold)
+        else:
+            train_data_scaled = train_data_scaled_res
+            data_scaler = None
+            val_data_scaled = dt.transform_with_scaler(val_data_fold, data_scaler_path)
+
+        if isinstance(train_labels_scaled_res, tuple):
+            train_labels_scaled, label_scaler = train_labels_scaled_res
+            val_labels_scaled = label_scaler.transform(val_labels_fold)
+        else:
+            train_labels_scaled = train_labels_scaled_res
+            label_scaler = None
+            val_labels_scaled = dt.transform_with_scaler(val_labels_fold, label_scaler_path)
         
         input_size = train_data_scaled.shape[1]
         output_size = train_labels_scaled.shape[1]
@@ -429,14 +466,12 @@ def crossval(data, labels, args):  # REMOVED: test_data, test_labels
         
         # Create fresh model for this fold
         set_seed(1)
-        model = mod.GRUModel(
+        model = mod.TCNRegressor(
             input_size=input_size,
-            hidden_size=args.hidden_size,
+            num_channels=getattr(args, 'num_channels', [64, 64]),
             output_size=output_size,
-            num_layers=args.num_layers,
+            kernel_size=getattr(args, 'kernel_size', 2),
             dropout=args.dropout,
-            num_attention_heads=getattr(args, 'num_attention_heads', 4),
-            args=args
         ).to(args.device)
         
         # Train and evaluate on validation fold

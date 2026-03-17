@@ -32,6 +32,7 @@ def ray_train(config):
         **config,
         seed=1,
         epoch=100,
+        n_splits=config.get('n_splits', 5),
         tuning_mode=True,       
         cv_data=dataset['cv_data'],
         cv_labels=dataset['cv_labels'],
@@ -54,12 +55,22 @@ def ray_train(config):
     fold_results = crossval(
         data=args.cv_data,
         labels=args.cv_labels,
-        args=args,
-        n_splits=5
+        args=args
     )
     
     # Report results
-    mean_loss = np.mean([r['test_loss'] for r in fold_results])
-    std_loss = np.std([r['test_loss'] for r in fold_results])
-    
-    tune.report({"loss": mean_loss, "std": std_loss})  # Change from session.report to tune.report
+    mean_loss = float(np.mean([r['test_loss'] for r in fold_results]))
+    std_loss = float(np.std([r['test_loss'] for r in fold_results]))
+    mean_peak_loss = float(np.mean([r.get('peak_mape', r['test_loss']) for r in fold_results]))
+    mean_dir_acc = float(np.mean([r.get('dir_acc', 0.0) for r in fold_results]))
+
+    # Lower is better; include directional term as a penalty.
+    combined = float(mean_loss + 0.3 * mean_peak_loss + 10.0 * (1.0 - mean_dir_acc))
+
+    tune.report({
+        "loss": mean_loss,
+        "peak_loss": mean_peak_loss,
+        "dir_acc": mean_dir_acc,
+        "combined": combined,
+        "std": std_loss,
+    })

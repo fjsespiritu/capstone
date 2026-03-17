@@ -1,0 +1,10 @@
+{
+    "label": "BOC",
+    "start_date": "2000-01-01",
+    "seed": 1,
+    "test_loss": 10.98485279083252,
+    "per_label_mape": {
+        "loss_BOC": 10.98485279083252
+    },
+    "timestamp": "2026-03-13T19:35:50.969294"
+}

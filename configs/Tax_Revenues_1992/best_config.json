@@ -1,47 +1,19 @@
 {
-    "num_channels": [
-        256,
-        256
-    ],
-    "kernel_size": 5,
-    "dropout": 0.2853472253623712,
-    "lr": 0.000778538378174269,
-    "wd": 1.0938681987370632e-06,
-    "factor": 0.3971385695993662,
-    "patience": 10,
-    "batch_size": 64,
-    "seq_len": 18,
-    "l1_lambda": 2.40231648010856e-05,
-    "lag_periods": [
-        1,
-        3,
-        6,
-        12
-    ],
-    "features": [
-        "Tax Revenues",
-        "BIR",
-        "BOC",
-        "Other Offices",
-        "Non-tax Revenues",
-        "Expenditures",
-        "TotalTrade_PHPMN",
-        "NominalGDP_disagg",
-        "Pop_disagg",
+    "wd": 1e-05,
+    "l1_lambda": 1e-05,
+    "early_stopping_patience": 75,
+    "log_transform": true,
+    "skip_log_cols": [
+        "Inflation",
         "USDPHP"
     ],
-    "dummy_vars": [
-        "COVID-19",
-        "TRAIN",
-        "CREATE",
-        "FIST",
-        "BIR_COMM"
-    ],
-    "use_seasonal": true,
-    "use_lags": true,
-    "labels": [
-        "Tax Revenues"
-    ],
-    "experiment_name": "Tax_Revenues_1992",
-    "start_date": "1992-01-01"
+    "factor": 0.5,
+    "patience": 5,
+    "hidden_size": 64,
+    "num_layers": 1,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "seq_len": 12,
+    "train_loss_name": "huber",
+    "batch_size": 32
 }

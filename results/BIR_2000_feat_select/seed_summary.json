@@ -1,0 +1,93 @@
+{
+    "label": "BIR",
+    "start_date": "2000-01-01",
+    "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "mean_test_loss": 16.515609169006346,
+    "std_test_loss": 0.8088323040497524,
+    "best_seed": 3,
+    "best_seed_test_loss": 15.55795669555664,
+    "seed_results": [
+        {
+            "seed": 1,
+            "test_loss": 16.059925079345703,
+            "per_label_mape": {
+                "loss_BIR": 16.059925079345703
+            }
+        },
+        {
+            "seed": 2,
+            "test_loss": 18.724328994750977,
+            "per_label_mape": {
+                "loss_BIR": 18.724328994750977
+            }
+        },
+        {
+            "seed": 3,
+            "test_loss": 15.55795669555664,
+            "per_label_mape": {
+                "loss_BIR": 15.55795669555664
+            }
+        },
+        {
+            "seed": 4,
+            "test_loss": 16.398292541503906,
+            "per_label_mape": {
+                "loss_BIR": 16.398292541503906
+            }
+        },
+        {
+            "seed": 5,
+            "test_loss": 16.458843231201172,
+            "per_label_mape": {
+                "loss_BIR": 16.458843231201172
+            }
+        },
+        {
+            "seed": 6,
+            "test_loss": 16.30875015258789,
+            "per_label_mape": {
+                "loss_BIR": 16.30875015258789
+            }
+        },
+        {
+            "seed": 7,
+            "test_loss": 16.629318237304688,
+            "per_label_mape": {
+                "loss_BIR": 16.629318237304688
+            }
+        },
+        {
+            "seed": 8,
+            "test_loss": 15.862548828125,
+            "per_label_mape": {
+                "loss_BIR": 15.862548828125
+            }
+        },
+        {
+            "seed": 9,
+            "test_loss": 16.451745986938477,
+            "per_label_mape": {
+                "loss_BIR": 16.451745986938477
+            }
+        },
+        {
+            "seed": 10,
+            "test_loss": 16.704381942749023,
+            "per_label_mape": {
+                "loss_BIR": 16.704381942749023
+            }
+        }
+    ],
+    "timestamp": "2026-03-13T19:34:40.311126"
+}

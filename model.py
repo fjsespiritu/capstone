@@ -70,21 +70,6 @@ class TemporalConvNet(nn.Module):
         return self.network(x)
 
 
-class TCNClassifier(nn.Module):
-    """TCN for classification tasks"""
-    def __init__(self, input_size, num_channels, num_classes, kernel_size=2, dropout=0.2):
-        super(TCNClassifier, self).__init__()
-        self.tcn = TemporalConvNet(input_size, num_channels, kernel_size, dropout)
-        self.linear = nn.Linear(num_channels[-1], num_classes)
-
-    def forward(self, x):
-        # x shape: (batch, input_size, seq_len)
-        y = self.tcn(x)
-        # Take the last time step
-        y = y[:, :, -1]
-        return self.linear(y)
-
-
 class TCNRegressor(nn.Module):
     """TCN for regression tasks"""
     def __init__(self, input_size, num_channels, output_size=1, kernel_size=2, dropout=0.2):
@@ -98,32 +83,3 @@ class TCNRegressor(nn.Module):
         return self.linear(y)
 
 
-# Example usage
-if __name__ == "__main__":
-    # Classification example
-    batch_size = 32
-    seq_length = 100
-    input_size = 10
-    num_classes = 5
-    num_channels = [25, 25, 25, 25]
-    
-    model = TCNClassifier(input_size=input_size, 
-                         num_channels=num_channels,
-                         num_classes=num_classes,
-                         kernel_size=3,
-                         dropout=0.2)
-    
-    x = torch.randn(batch_size, input_size, seq_length)
-    output = model(x)
-    print(f"Input shape: {x.shape}")
-    print(f"Output shape: {output.shape}")
-    
-    # Regression example
-    regressor = TCNRegressor(input_size=input_size,
-                            num_channels=num_channels,
-                            output_size=1,
-                            kernel_size=3,
-                            dropout=0.2)
-    
-    reg_output = regressor(x)
-    print(f"Regression output shape: {reg_output.shape}")

@@ -1,0 +1,10 @@
+{
+    "label": "Other Offices",
+    "start_date": "2000-01-01",
+    "seed": 3,
+    "test_loss": 21.116931915283203,
+    "per_label_mape": {
+        "loss_Other Offices": 21.116931915283203
+    },
+    "timestamp": "2026-03-13T19:49:41.918175"
+}
