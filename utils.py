@@ -133,19 +133,19 @@ def explain_model(models, data_loader, args, num_samples=100):
     for m in models:
         m.eval()
 
-    # Build feature names
-    feature_names = []
+    # Build base feature names before expanding across time steps.
+    base_feature_names = []
     if hasattr(args, 'features'):
-        feature_names.extend(args.features)
+        base_feature_names.extend(args.features)
     if hasattr(args, 'labels') and hasattr(args, 'lag_periods'):
         for label in args.labels:
             for lag in args.lag_periods:
-                feature_names.append(f'{label}_lag_{lag}')
+                base_feature_names.append(f'{label}_lag_{lag}')
     if hasattr(args, 'dummy_vars'):
-        feature_names.extend(args.dummy_vars)
+        base_feature_names.extend(args.dummy_vars)
     if getattr(args, 'use_seasonal', False):
-        feature_names.extend(['month_sin', 'month_cos', 'quarter_sin', 'quarter_cos',
-                              'is_tax_season', 'is_year_end'])
+        base_feature_names.extend(['month_sin', 'month_cos', 'quarter_sin', 'quarter_cos',
+                                   'is_tax_season', 'is_year_end'])
 
     # TCN DataLoader gives (batch, features, seq_len)
     background_data = None
@@ -164,6 +164,9 @@ def explain_model(models, data_loader, args, num_samples=100):
         test_batches.append(flat)
         if sum(b.shape[0] for b in test_batches) >= 20:
             break
+
+    if not test_batches:
+        raise ValueError('Data loader produced no batches for SHAP explanation.')
 
     test_data = np.vstack(test_batches)[:20]
 
