@@ -1,0 +1,36 @@
+{
+  "batch_size": 64,
+  "dropout": 0.18255819722918992,
+  "dummy_vars": [
+    "TRAIN",
+    "CREATE",
+    "COVID-19"
+  ],
+  "experiment_name": "BOC_2000_feat_select",
+  "factor": 0.4795763474777932,
+  "features": [
+    "Imports_PHPMN",
+    "Other Offices",
+    "USDPHP",
+    "Non-tax Revenues"
+  ],
+  "kernel_size": 4,
+  "l1_lambda": 0.005821200376032201,
+  "labels": [
+    "BOC"
+  ],
+  "lag_periods": [
+    1
+  ],
+  "lr": 0.008785273672878936,
+  "num_channels": [
+    256
+  ],
+  "patience": 5,
+  "seq_len": 18,
+  "start_date": "2000-01-01",
+  "tag": "feat_select",
+  "use_lags": true,
+  "use_seasonal": true,
+  "wd": 1.9756821158868617e-06
+}

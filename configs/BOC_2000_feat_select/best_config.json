@@ -1,25 +1,26 @@
 {
     "num_channels": [
         64,
-        64,
         64
     ],
     "kernel_size": 2,
-    "dropout": 0.10861847091994914,
-    "lr": 0.006013646993564991,
-    "wd": 1.4873485628908507e-06,
-    "factor": 0.2988534565363552,
-    "patience": 5,
-    "batch_size": 32,
-    "seq_len": 18,
-    "l1_lambda": 1.1921273100425214e-05,
+    "dropout": 0.2126272741139092,
+    "lr": 0.00580987810210882,
+    "wd": 7.498280695095581e-06,
+    "factor": 0.40498482242929496,
+    "patience": 10,
+    "batch_size": 64,
+    "seq_len": 12,
+    "l1_lambda": 0.0005780917110996922,
     "lag_periods": [
         1
     ],
     "tag": "feat_select",
     "features": [
-        "TotalTrade_PHPMN",
-        "USDPHP"
+        "Imports_PHPMN",
+        "Other Offices",
+        "USDPHP",
+        "Non-tax Revenues"
     ],
     "dummy_vars": [
         "TRAIN",

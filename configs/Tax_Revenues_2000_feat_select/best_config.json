@@ -1,21 +1,22 @@
 {
     "num_channels": [
-        128
+        256,
+        256
     ],
-    "kernel_size": 3,
-    "dropout": 0.1314664243204635,
-    "lr": 0.005755825299568205,
-    "wd": 1.1781666635214962e-05,
-    "factor": 0.2793865837741797,
+    "kernel_size": 4,
+    "dropout": 0.125870949243793,
+    "lr": 0.0015646452358902207,
+    "wd": 3.967620902435355e-06,
+    "factor": 0.2595378838869209,
     "patience": 10,
-    "batch_size": 32,
-    "seq_len": 18,
-    "l1_lambda": 1.897454963271349e-05,
+    "batch_size": 16,
+    "seq_len": 12,
+    "l1_lambda": 2.7094860262231098e-05,
     "lag_periods": [],
     "tag": "feat_select",
     "features": [
         "BIR",
-        "TotalTrade_PHPMN",
+        "Imports_PHPMN",
         "Other Offices",
         "Non-tax Revenues",
         "USDPHP",

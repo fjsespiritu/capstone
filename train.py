@@ -308,6 +308,14 @@ def run(model, train_loader, val_loader, test_loader, args, fold=None, label_sca
     
     is_tuning = getattr(args, 'tuning_mode', False)
     is_cv = fold is not None
+
+    if not hasattr(args, 'early_stopping_patience'):
+        args.early_stopping_patience = 75
+    if not hasattr(args, 'early_stopping_min_delta'):
+        args.early_stopping_min_delta = 0.0
+    if not hasattr(args, 'smooth_window'):
+        args.smooth_window = 1
+
     use_early_stopping = getattr(args, 'early_stopping_patience', 0) > 0
     
     early_stopper = EarlyStopper(

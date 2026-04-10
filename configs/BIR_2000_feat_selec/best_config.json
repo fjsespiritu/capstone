@@ -9,11 +9,11 @@
     ],
     "factor": 0.5,
     "patience": 5,
-    "hidden_size": 96,
+    "hidden_size": 64,
     "num_layers": 1,
     "dropout": 0.1,
     "lr": 0.001,
-    "seq_len": 18,
-    "train_loss_name": "quantile",
+    "seq_len": 12,
+    "train_loss_name": "huber",
     "batch_size": 32
 }
