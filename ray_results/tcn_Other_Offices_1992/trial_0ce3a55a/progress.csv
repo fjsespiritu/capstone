@@ -1,2 +1,0 @@
-loss,std,timestamp,checkpoint_dir_name,done,training_iteration,trial_id,date,time_this_iter_s,time_total_s,pid,hostname,node_ip,time_since_restore,iterations_since_restore
-27.200211334228516,6.357994283547619,1771935081,,False,1,0ce3a55a,2026-02-24_20-11-21,171.49831700325012,171.49831700325012,16760,LAPTOP-1NRKBOP9,127.0.0.1,171.49831700325012,1

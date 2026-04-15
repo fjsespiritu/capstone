@@ -2,10 +2,65 @@ import tempfile
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import os
+import sys
+import importlib
 from scipy import stats
 from data import inverse_transform
 import shap
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+
+def _resolve_shap_package():
+    """Resolve the external SHAP package even when local shap.py exists."""
+    global shap
+    if hasattr(shap, "KernelExplainer"):
+        return shap
+
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    cwd = os.getcwd()
+
+    def _norm_path(p):
+        return os.path.normcase(os.path.abspath(p))
+
+    project_norm = _norm_path(project_dir)
+    cwd_norm = _norm_path(cwd)
+
+    removed_items = []
+    kept_items = []
+    for path_entry in list(sys.path):
+        try:
+            candidate = cwd if path_entry == "" else path_entry
+            candidate_norm = _norm_path(candidate)
+            shadows_local_shap = os.path.exists(os.path.join(candidate, "shap.py"))
+        except Exception:
+            candidate_norm = ""
+            shadows_local_shap = False
+
+        should_remove = (
+            path_entry == ""
+            or candidate_norm in (project_norm, cwd_norm)
+            or shadows_local_shap
+        )
+
+        if should_remove:
+            removed_items.append(path_entry)
+        else:
+            kept_items.append(path_entry)
+
+    sys.path[:] = kept_items
+
+    try:
+        if "shap" in sys.modules:
+            del sys.modules["shap"]
+        shap = importlib.import_module("shap")
+    finally:
+        sys.path[:0] = removed_items
+
+    if not hasattr(shap, "KernelExplainer"):
+        raise ImportError("Could not resolve external SHAP package; local shap.py is shadowing it.")
+
+    return shap
 
 
 def plot_qq(actual_dict, pred_dict, label_cols, save_path=None):
@@ -130,6 +185,7 @@ def plot_test_predictions(test_preds, test_actuals, label, save_dir=None):
 
 def explain_model(models, data_loader, args, num_samples=100):
     """Generate SHAP explanations for an ensemble of models."""
+    shap_pkg = _resolve_shap_package()
     for m in models:
         m.eval()
 
@@ -187,7 +243,7 @@ def explain_model(models, data_loader, args, num_samples=100):
                 preds.append(m(x_tensor).cpu().numpy())
         return np.mean(preds, axis=0)
 
-    explainer   = shap.KernelExplainer(ensemble_predict, background_data)
+    explainer   = shap_pkg.KernelExplainer(ensemble_predict, background_data)
     shap_values = explainer.shap_values(test_data, nsamples=100)
 
     return explainer, shap_values, test_data, feature_names
@@ -195,9 +251,10 @@ def explain_model(models, data_loader, args, num_samples=100):
 
 def plot_shap_summary(shap_values, test_data, feature_names, output_name=None):
     """Plot SHAP summary - shows feature importance."""
+    shap_pkg = _resolve_shap_package()
     title = f'SHAP Feature Importance - {output_name}' if output_name else 'SHAP Feature Importance'
     plt.figure(figsize=(10, 8))
-    shap.summary_plot(shap_values, test_data, feature_names=feature_names, show=False)
+    shap_pkg.summary_plot(shap_values, test_data, feature_names=feature_names, show=False)
     plt.title(title)
     plt.tight_layout()
     plt.show()
@@ -205,9 +262,10 @@ def plot_shap_summary(shap_values, test_data, feature_names, output_name=None):
 
 def plot_shap_bar(shap_values, test_data, feature_names, output_name=None):
     """Plot SHAP bar chart - mean absolute SHAP values."""
+    shap_pkg = _resolve_shap_package()
     title = f'SHAP Mean Importance - {output_name}' if output_name else 'SHAP Mean Importance'
     plt.figure(figsize=(10, 6))
-    shap.summary_plot(shap_values, test_data, feature_names=feature_names, plot_type="bar", show=False)
+    shap_pkg.summary_plot(shap_values, test_data, feature_names=feature_names, plot_type="bar", show=False)
     plt.title(title)
     plt.tight_layout()
     plt.show()
@@ -215,11 +273,12 @@ def plot_shap_bar(shap_values, test_data, feature_names, output_name=None):
 
 def plot_shap_waterfall(explainer, shap_values, test_data, feature_names, sample_idx=0, output_name=None):
     """Plot SHAP waterfall - explains a single prediction."""
+    shap_pkg = _resolve_shap_package()
     sv  = np.asarray(shap_values[0] if isinstance(shap_values, list) else shap_values)
     row = sv[sample_idx].reshape(-1)
     base_val = np.asarray(explainer.expected_value).ravel()
     base_val = float(base_val[0]) if base_val.size > 1 else float(base_val)
-    explanation = shap.Explanation(
+    explanation = shap_pkg.Explanation(
         values=row,
         base_values=base_val,
         data=np.asarray(test_data[sample_idx]).reshape(-1),
@@ -227,7 +286,7 @@ def plot_shap_waterfall(explainer, shap_values, test_data, feature_names, sample
     )
     title = f'SHAP Waterfall - Sample {sample_idx}, {output_name}' if output_name else f'SHAP Waterfall - Sample {sample_idx}'
     plt.figure(figsize=(10, 8))
-    shap.waterfall_plot(explanation, show=False)
+    shap_pkg.waterfall_plot(explanation, show=False)
     plt.title(title)
     plt.tight_layout()
     plt.show()
@@ -235,23 +294,25 @@ def plot_shap_waterfall(explainer, shap_values, test_data, feature_names, sample
 
 def plot_shap_dependence(shap_values, test_data, feature_names, feature_idx, output_name=None):
     """Plot SHAP dependence plot for a specific feature."""
+    shap_pkg = _resolve_shap_package()
     feature_name = feature_names[feature_idx]
     title = f'SHAP Dependence: {feature_name} - {output_name}' if output_name else f'SHAP Dependence: {feature_name}'
     plt.figure(figsize=(10, 6))
-    shap.dependence_plot(feature_idx, shap_values, test_data, feature_names=feature_names, show=False)
+    shap_pkg.dependence_plot(feature_idx, shap_values, test_data, feature_names=feature_names, show=False)
     plt.title(title)
     plt.tight_layout()
     plt.show()
 
 def plot_shap_combined(explainer, shap_values, test_data, feature_names, output_name=None, save_dir=None):
     """Save individual SHAP plots then stitch into one image."""
+    shap_pkg = _resolve_shap_package()
     import tempfile
     from PIL import Image
     tmp = tempfile.mkdtemp()
     
     # Summary
     plt.figure(figsize=(10, 8))
-    shap.summary_plot(shap_values, test_data, feature_names=feature_names, show=False)
+    shap_pkg.summary_plot(shap_values, test_data, feature_names=feature_names, show=False)
     plt.title(f'Feature Importance — {output_name}')
     plt.tight_layout()
     plt.savefig(f"{tmp}/summary.png", dpi=150, bbox_inches='tight')
@@ -259,7 +320,7 @@ def plot_shap_combined(explainer, shap_values, test_data, feature_names, output_
     
     # Bar
     plt.figure(figsize=(10, 8))
-    shap.summary_plot(shap_values, test_data, feature_names=feature_names, plot_type="bar", show=False)
+    shap_pkg.summary_plot(shap_values, test_data, feature_names=feature_names, plot_type="bar", show=False)
     plt.title(f'Mean Importance — {output_name}')
     plt.tight_layout()
     plt.savefig(f"{tmp}/bar.png", dpi=150, bbox_inches='tight')
@@ -270,14 +331,14 @@ def plot_shap_combined(explainer, shap_values, test_data, feature_names, output_
     row = sv[0].reshape(-1)
     base_val = np.asarray(explainer.expected_value).ravel()
     base_val = float(base_val[0]) if base_val.size > 1 else float(base_val)
-    explanation = shap.Explanation(
+    explanation = shap_pkg.Explanation(
         values=row,
         base_values=base_val,
         data=np.asarray(test_data[0]).reshape(-1),
         feature_names=feature_names,
     )
     plt.figure(figsize=(10, 8))
-    shap.waterfall_plot(explanation, show=False)
+    shap_pkg.waterfall_plot(explanation, show=False)
     plt.title(f'Waterfall — Sample 0, {output_name}')
     plt.tight_layout()
     plt.savefig(f"{tmp}/waterfall.png", dpi=150, bbox_inches='tight')
@@ -302,3 +363,36 @@ def plot_shap_combined(explainer, shap_values, test_data, feature_names, output_
     plt.axis('off')
     plt.tight_layout()
     plt.show()
+
+def plot_test_predictions(test_preds, test_actuals, label, save_dir=None):
+    test_preds   = np.array(test_preds).flatten()
+    test_actuals = np.array(test_actuals).flatten()
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(test_actuals, label='Actual',    linewidth=2)
+    plt.plot(test_preds,   label='Predicted', linewidth=2, alpha=0.7)
+    plt.xlabel('Time Step')
+    plt.ylabel('Value')
+    plt.title(f'{label}: Predictions vs Actual')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    if save_dir:
+        plt.savefig(f"{save_dir}/predictions.png", dpi=150)
+    plt.show()
+
+def plot_qq(actual_dict, pred_dict, label_cols, save_path=None):
+    fig, axes = plt.subplots(1, len(label_cols), figsize=(5 * len(label_cols), 4))
+    if len(label_cols) == 1:
+        axes = [axes]
+
+    for ax, label in zip(axes, label_cols):
+        residuals = np.array(actual_dict[label]).flatten() - np.array(pred_dict[label]).flatten()
+        stats.probplot(residuals, dist="norm", plot=ax)
+        ax.set_title(f'Q-Q Plot — {label}')
+        ax.get_lines()[1].set_color('red')
+
+    plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path, dpi=150)
+    plt.show()   

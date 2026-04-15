@@ -1,9 +1,0 @@
-{
-    "label": "Tax Revenues",
-    "start_date": "1992-01-01",
-    "test_loss": 17.179418563842773,
-    "per_label_mape": {
-        "loss_Tax Revenues": 17.179418563842773
-    },
-    "timestamp": "2026-03-02T06:18:19.984615"
-}

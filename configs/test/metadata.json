@@ -1,9 +1,0 @@
-{
-    "best_loss": Infinity,
-    "best_std": null,
-    "num_trials": 100,
-    "num_completed": 100,
-    "num_pruned": 0,
-    "num_failed": 0,
-    "timestamp": "2026-02-12T10:49:41.105870"
-}

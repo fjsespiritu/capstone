@@ -1,9 +1,9 @@
 {
     "label": "Other Offices",
     "start_date": "2000-01-01",
-    "test_loss": 20.636764526367188,
+    "test_loss": 27.421953201293945,
     "per_label_mape": {
-        "loss_Other Offices": 20.636764526367188
+        "loss_Other Offices": 27.421953201293945
     },
-    "timestamp": "2026-04-10T14:51:18.951753"
+    "timestamp": "2026-04-11T18:18:53.937122"
 }
